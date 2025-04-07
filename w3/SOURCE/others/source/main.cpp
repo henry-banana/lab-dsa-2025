@@ -1,13 +1,13 @@
-#include "../header/commandLine.hpp"
+#include "../header/commandLine.h"
 
 // #define EXPERIMENT
 
-void overview() { // This function is for testing the algorithms with different data sizes and data orders
-    int data_test[6] = {10000, 30000, 50000, 100000, 300000, 500000};
+void overview() {
+    int data_test[4] = {10000, 30000, 50000, 100000};
     std::vector<int> arr;
 
     #ifdef EXPERIMENT
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 4; i++) {
             data_test[i] /= 1000;
         }
     #endif
@@ -21,13 +21,13 @@ void overview() { // This function is for testing the algorithms with different 
 
         std::cout << "Data order: " << getDataOrderName(dataOrderCode) << '\n';
         std::cout << "Data size";
-        for (int size_idx = 0; size_idx < 6; size_idx++) {
+        for (int size_idx = 0; size_idx < 4; size_idx++) {
             out << ", " << data_test[size_idx] << ", ";
             std::cout << ", " << data_test[size_idx] << ", ";
         }
         out << "\nResulting statics";
         std::cout << "\nResulting statics";
-        for (int size_idx = 0; size_idx < 6; size_idx++) {
+        for (int size_idx = 0; size_idx < 4; size_idx++) {
             out << ", Running time, Comparison";
             std::cout << ", Running time, Comparison";
         }
@@ -37,7 +37,7 @@ void overview() { // This function is for testing the algorithms with different 
         for (int algorithmID = 0; algorithmID < NUMBER_SORT_ALGORITHM; algorithmID++) {
             out << getAlgorithmName(algorithmID);
             std::cout << getAlgorithmName(algorithmID);
-            for (int size_idx = 0; size_idx < 6; size_idx++) {
+            for (int size_idx = 0; size_idx < 4; size_idx++) {
                 int data_size = data_test[size_idx];
                 arr.resize(data_size);
                 generateData(arr, data_size, dataOrderCode);

@@ -1,4 +1,4 @@
-#include "../header/heapSort.hpp"
+#include "../header/heapSort.h"
 
 template<class T>
 void heapify(std::vector<T>& array, size_t n, size_t i, size_t& count_comparison)

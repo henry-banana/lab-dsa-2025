@@ -1,4 +1,4 @@
-#include "../header/mergeSort.hpp"
+#include "../header/mergeSort.h"
 
 template<class T>
 void Merge(std::vector<T>& array, size_t left, size_t mid, size_t right, size_t& count_comparison) {

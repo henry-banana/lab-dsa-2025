@@ -1,4 +1,4 @@
-#include "../header/dataGenerator.hpp"
+#include "../header/dataGenerator.h"
 
 //-------------------------------------------------
 template <class T>

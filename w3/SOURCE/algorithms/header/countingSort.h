@@ -1,9 +1,9 @@
 #pragma once
 
-#include "../../others/header/helpFunctions.hpp"
+#include "../../others/header/helpFunctions.h"
 
-#ifndef COUNTING_SORT_HPP
-#define COUNTING_SORT_HPP
+#ifndef COUNTING_SORT_H
+#define COUNTING_SORT_H
 
 template<class T>
 void countingSort(std::vector<T>& array, size_t& count_comparison);
@@ -11,4 +11,4 @@ void countingSort(std::vector<T>& array, size_t& count_comparison);
 template<class T>
 void countingSort(std::vector<T>& array);
 
-#endif // COUNTING_SORT_HPP
+#endif // COUNTING_SORT_H

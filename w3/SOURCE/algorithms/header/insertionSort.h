@@ -1,11 +1,11 @@
 #pragma once
 
-#include "../../others/header/helpFunctions.hpp"
+#include "../../others/header/helpFunctions.h"
 
-#ifndef INSERTION_SORT_HPP
-#define INSERTION_SORT_HPP
+#ifndef INSERTION_SORT_H
+#define INSERTION_SORT_H
 
 template <class T> void insertionSort(std::vector<T> &arr, size_t &count_comparison);
 template <class T> void insertionSort(std::vector<T> &arr);
 
-#endif // INSERTION_SORT_HPP
+#endif // INSERTION_SORT_H

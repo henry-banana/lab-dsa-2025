@@ -1,5 +1,5 @@
-#include "../../Others/header/helpFunctions.hpp"
-#include "../header/selectionSort.hpp"
+#include "../../Others/header/helpFunctions.h"
+#include "../header/selectionSort.h"
 
 template <class T>
 void selectionSort(std::vector<T>& array) {

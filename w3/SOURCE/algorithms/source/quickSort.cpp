@@ -1,4 +1,4 @@
-#include "../header/quickSort.hpp"
+#include "../header/quickSort.h"
 
 template<class T>
 int Partition(std::vector<T>& array, int low, int high, size_t& count_comparison)   //sử dụng cải tiến với lấy pivot là trung vị của 3 số array[low], array[high] và array[mid]

@@ -1,4 +1,4 @@
-#include "../header/bubbleSort.hpp"
+#include "../header/bubbleSort.h"
 
 template <class T>
 void bubbleSort(std::vector<T> &arr, size_t &count_comparison) {

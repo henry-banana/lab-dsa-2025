@@ -1,25 +1,25 @@
 #pragma once
 
-#include "helpFunctions.hpp"
-#include "dataGenerator.hpp"
+#include "helpFunctions.h"
+#include "dataGenerator.h"
 
-#include "../../algorithms/header/selectionSort.hpp"
-#include "../../algorithms/header/insertionSort.hpp"
-#include "../../algorithms/header/bubbleSort.hpp"
-#include "../../algorithms/header/shakerSort.hpp"
-#include "../../algorithms/header/shellSort.hpp"
-#include "../../algorithms/header/heapSort.hpp"
-#include "../../algorithms/header/mergeSort.hpp"
-#include "../../algorithms/header/quickSort.hpp"
-#include "../../algorithms/header/countingSort.hpp"
-#include "../../algorithms/header/radixSort.hpp"
-#include "../../algorithms/header/flashSort.hpp"
+#include "../../algorithms/header/selectionSort.h"
+#include "../../algorithms/header/insertionSort.h"
+#include "../../algorithms/header/bubbleSort.h"
+#include "../../algorithms/header/shakerSort.h"
+#include "../../algorithms/header/shellSort.h"
+#include "../../algorithms/header/heapSort.h"
+#include "../../algorithms/header/mergeSort.h"
+#include "../../algorithms/header/quickSort.h"
+#include "../../algorithms/header/countingSort.h"
+#include "../../algorithms/header/radixSort.h"
+#include "../../algorithms/header/flashSort.h"
 
-#ifndef SORT_EXPERIMENT_HPP
-#define SORT_EXPERIMENT_HPP
+#ifndef SORT_EXPERIMENT_H
+#define SORT_EXPERIMENT_H
 
 #define NUMBER_DATA_ORDER 4 // 0: Random, 1: Nearly Sorted, 2: Sorted, 3: Reverse
-#define NUMBER_SORT_ALGORITHM 12
+#define NUMBER_SORT_ALGORITHM 11
 #define SELECTION_SORT 0
 #define INSERTION_SORT 1
 #define BUBBLE_SORT 2
@@ -47,8 +47,9 @@ class SortExperiment {
         int data_order_id;                      // 0: Random, 1: Nearly Sorted, 2: Sorted, 3: Reverse
         int algorithm_id[2];                    // for compare mode, we need to identify 2 algorithms
         bool is_algorithm_mode;                 // true: algorithm mode, false: compare mode
-        bool is_input_from_file;                // for  command line 1 & 4
-        bool is_running_all;                    // for command line 3
+        bool is_input_from_file;                // for  command line
+        bool is_running_all;
+        std::string output_file;
         std::vector<ResultOfSorting> results;   // store the result of sorting
 
         SortExperiment();

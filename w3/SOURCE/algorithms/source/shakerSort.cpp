@@ -1,4 +1,4 @@
-#include "../header/shakerSort.hpp"
+#include "../header/shakerSort.h"
 
 template<class T>
 void shakerSort(std::vector<T>& array, size_t& count_comparison) 

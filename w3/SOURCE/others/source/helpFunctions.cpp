@@ -1,5 +1,5 @@
-#include "../header/helpFunctions.hpp"
-#include "../header/dataGenerator.hpp"
+#include "../header/helpFunctions.h"
+#include "../header/dataGenerator.h"
 
 template <class T>
 void swap(T &a, T &b) {

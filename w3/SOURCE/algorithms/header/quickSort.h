@@ -1,9 +1,9 @@
 #pragma once
 
-#include "../../others/header/helpFunctions.hpp"
+#include "../../others/header/helpFunctions.h"
 
-#ifndef QUICK_SORT_HPP
-#define QUICK_SORT_HPP
+#ifndef QUICK_SORT_H
+#define QUICK_SORT_H
 
 template<class T>
 int Partition(std::vector<int>& array, int low, int high, size_t& count_comparison);
@@ -23,4 +23,4 @@ void impleQuickSort(std::vector<T>& array, int low, int high);
 template<class T>
 void quickSort(std::vector<T>& array);
 
-#endif // QUICK_SORT_HPP
+#endif // QUICK_SORT_H

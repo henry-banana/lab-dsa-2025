@@ -1,9 +1,9 @@
 #pragma once
 
-#include "../../others/header/helpFunctions.hpp"
+#include "../../others/header/helpFunctions.h"
 
-#ifndef SHAKER_SORT_HPP
-#define SHAKER_SORT_HPP
+#ifndef SHAKER_SORT_H
+#define SHAKER_SORT_H
 
 template<class T>
 void shakerSort(std::vector<T>& array);
@@ -11,4 +11,4 @@ void shakerSort(std::vector<T>& array);
 template<class T>
 void shakerSort(std::vector<T>& array, size_t& count_comparison);
 
-#endif // SHAKER_SORT_HPP
+#endif // SHAKER_SORT_H

@@ -1,4 +1,4 @@
-#include "../header/shellSort.hpp"
+#include "../header/shellSort.h"
 
 template <class T>
 void shellSort(std::vector<T> &arr, size_t &count_comparison) {

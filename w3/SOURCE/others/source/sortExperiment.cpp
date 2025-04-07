@@ -1,4 +1,4 @@
-#include "../header/sortExperiment.hpp"
+#include "../header/sortExperiment.h"
 
 SortExperiment::SortExperiment() {
     arr.resize(NUMBER_SORT_ALGORITHM);
@@ -79,6 +79,7 @@ void SortExperiment::printResult() {
 }
         
 void SortExperiment::runAlgorithmMode() {
+    output_parameter = 3;
     int loops = is_running_all ? NUMBER_DATA_ORDER : 1;
     std::vector<int> temp;
 
@@ -108,8 +109,7 @@ void SortExperiment::runAlgorithmMode() {
     }
 
     if (loops == 1) {
-        std::string filename = "output.txt";
-        writeData(temp, filename);
+        writeData(temp, output_file);
     }
 }
 

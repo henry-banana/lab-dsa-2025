@@ -1,4 +1,4 @@
-#include "../header/radixSort.hpp"
+#include "../header/radixSort.h"
 
 template<class T>
 T getMax(std::vector<T>& array, size_t& count_comparison)

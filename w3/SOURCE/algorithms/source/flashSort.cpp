@@ -1,4 +1,4 @@
-#include "../header/flashSort.hpp"
+#include "../header/flashSort.h"
 
 template <class T> 
 void flashSort(std::vector<T> &arr, size_t &count_comparison) {

@@ -1,9 +1,9 @@
 #pragma once
 
-#include "helpFunctions.hpp"
+#include "helpFunctions.h"
 
-#ifndef DATA_GENERATOR_HPP
-#define DATA_GENERATOR_HPP
+#ifndef DATA_GENERATOR_H
+#define DATA_GENERATOR_H
 
 template <class T>
 void generateRandomData(std::vector<int> &arr, int n);
@@ -14,4 +14,4 @@ void generateData(std::vector<int> &arr, int n, int dataType);
 std::string getDataOrderName(int data_order_id);
 int getDataOrderID(char agr_flag[]);
 
-#endif // DATA_GENERATOR_HPP
+#endif // DATA_GENERATOR_H

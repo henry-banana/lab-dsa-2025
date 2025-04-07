@@ -1,7 +1,7 @@
-#include "../header/commandLine.hpp"
+#include "../header/commandLine.h"
 
 bool parseCommandLine(SortExperiment &experiment, int argc, char **argv) {
-    if (argc < 2) return false;
+    if (argc < 2 || argc != 7) return false;
 
     for (int i = 1; i < argc; ) {
         if (!strcmp(argv[i], "-a")) {
@@ -17,6 +17,7 @@ bool parseCommandLine(SortExperiment &experiment, int argc, char **argv) {
         }
         else if (!strcmp(argv[i], "-o")) {
             if (i + 1 >= argc) return false;
+            experiment.output_file = argv[i + 1];
             i += 2;
         }
         else {
@@ -38,7 +39,7 @@ void handleAlgorithmMode(SortExperiment &experiment, char **argv) {
 void executeWithCommandLine(SortExperiment &experiment, int argc, char **argv) {
     if (!parseCommandLine(experiment, argc, argv)) {
         std::cout << "Invalid command line syntax!\n";
-        std::cout << "Usage: ./main.exe -a [algorithm] -i [input] -o [output]\n";
+        std::cout << "Usage: [execute file] -a [algorithm] -i [input] -o [output]\n";
         exit(1);
     }
 

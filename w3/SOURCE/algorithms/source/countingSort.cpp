@@ -1,4 +1,4 @@
-#include "../header/countingSort.hpp"
+#include "../header/countingSort.h"
 
 template<class T>
 void countingSort(std::vector<T>& array)

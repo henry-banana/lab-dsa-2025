@@ -1,5 +1,5 @@
 
-#include "../header/insertionSort.hpp"
+#include "../header/insertionSort.h"
 
 template <class T>
 void insertionSort(std::vector<T> &arr, size_t &count_comparison) {
