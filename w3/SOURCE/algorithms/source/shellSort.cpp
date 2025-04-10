@@ -1,18 +1,19 @@
-#include "../header/shellSort.h"
+﻿#include "../header/shellSort.h"
 
 template <class T>
 void shellSort(std::vector<T> &arr, size_t &count_comparison) {
-    count_comparison = 0; // Initialize comparison counter
+    count_comparison = 0;
     size_t n = arr.size();
     
-    // Start with a large gap and reduce it
-    for (size_t gap = n / 2; ++count_comparison && gap > 0; gap /= 2) {
-        // Perform a gapped insertion sort
+    // khởi đầu với gap bằng n/2 và giảm dần sau mỗi vòng lặp
+    for (size_t gap = n / 2; ++count_comparison && gap > 0; gap /= 2) {               
+
+        // thực hiện insertion sort giữa các phần tử cách nhau một đoạn gap
         for (size_t i = gap; ++count_comparison && i < n; ++i) {
             T temp = arr[i];
             size_t j = i;
 
-            // Shift earlier gap-sorted elements up until the correct location is found
+            // dịch chuyển các phần tử đã sắp xếp lên trên cho đến khi tìm được vị trí thích hợp để chèn
             while (++count_comparison && j >= gap && ++count_comparison && arr[j - gap] > temp) {
                 arr[j] = arr[j - gap];
                 j -= gap;
@@ -26,14 +27,15 @@ template <class T>
 void shellSort(std::vector<T> &arr) {
     size_t n = arr.size();
 
-    // Start with a large gap and reduce it
+    // khởi đầu với gap bằng n/2 và giảm dần sau mỗi vòng lặp
     for (size_t gap = n / 2; gap > 0; gap /= 2) {
-        // Perform a gapped insertion sort
+
+        // thực hiện insertion sort giữa các phần tử cách nhau một đoạn gap
         for (size_t i = gap; i < n; ++i) {
             T temp = arr[i];
             size_t j = i;
 
-            // Shift earlier gap-sorted elements up until the correct location is found
+            // dịch chuyển các phần tử đã sắp xếp lên trên cho đến khi tìm được vị trí thích hợp để chèn
             while (j >= gap && arr[j - gap] > temp) {
                 arr[j] = arr[j - gap];
                 j -= gap;

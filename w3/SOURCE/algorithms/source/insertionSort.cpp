@@ -1,35 +1,35 @@
-
+﻿
 #include "../header/insertionSort.h"
 
 template <class T>
-void insertionSort(std::vector<T> &arr, size_t &count_comparison) {
-    count_comparison = 0; // Initialize comparison counter
+void insertionSort(std::vector<T>& arr, size_t& count_comparison) {
+    count_comparison = 0;
 
     for (size_t i = 1; ++count_comparison && i < arr.size(); ++i) {
         T key = arr[i];
         size_t j = i;
 
-        // Shift elements of arr[0..i-1] that are greater than key
+        // dịch chuyển các phần tử arr[0..i-1] lớn hơn key
         while (++count_comparison && j > 0 && ++count_comparison && arr[j - 1] > key) {
             arr[j] = arr[j - 1];
             --j;
         }
-        arr[j] = key; // Place the key in its correct position
+        arr[j] = key; // đặt key vào vị trí đúng
     }
 }
 
 template <class T>
-void insertionSort(std::vector<T> &arr) {
+void insertionSort(std::vector<T>& arr) {
     for (size_t i = 1; i < arr.size(); ++i) {
         T key = arr[i];
         size_t j = i;
 
-        // Shift elements of arr[0..i-1] that are greater than key
+        // dịch chuyển các phần tử arr[0..i-1] lớn hơn key
         while (j > 0 && arr[j - 1] > key) {
             arr[j] = arr[j - 1];
             --j;
         }
-        arr[j] = key; // Place the key in its correct position
+        arr[j] = key; // đặt key vào vị trí đúng
     }
 }
 

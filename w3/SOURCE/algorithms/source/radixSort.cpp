@@ -3,7 +3,7 @@
 template<class T>
 T getMax(std::vector<T>& array, size_t& count_comparison)
 {
-    //cài đặt lấy giá trị lớn nhất (hoặc số có nhiều chữ số nhất) của radixSort
+    // cài đặt lấy giá trị lớn nhất (hoặc số có nhiều chữ số nhất) của radixSort
     T mx = array[0];
     size_t n = array.size();
     for (size_t i = 1; ++count_comparison && i < n; i++)
@@ -19,45 +19,57 @@ T getMax(std::vector<T>& array, size_t& count_comparison)
 template<class T>
 void countSort(std::vector<T>& array, size_t exp, size_t& count_comparison)
 {
-    //cài đặt hàm sắp xếp theo từng cơ số của từng chữ số trong radixSort
+    // cài đặt hàm sắp xếp theo từng cơ số của từng chữ số trong radixSort
     size_t n = array.size();
-    std::vector<T> output(n);                      //tạo một mảng tạm để lưu trữ sau khi sắp xếp theo cơ số
+
+    // tạo một mảng tạm để lưu trữ sau khi sắp xếp theo cơ số
+    std::vector<T> output(n);
     int i;
-    size_t cnt[10] = { 0 };                       //đếm số lần xuất hiện của từng chữ số trong cơ số 10
+
+    // đếm số lần xuất hiện của từng chữ số trong cơ số 10
+    size_t cnt[10] = { 0 };
     for (i = 0; ++count_comparison && i < n; i++)
     {
         cnt[(array[i] / exp) % 10]++;
     }
+
+    // cộng dồn mảng đếm để có được vị trí cuối cùng với mỗi cơ số hiện tại
     for (i = 1; ++count_comparison && i < 10; i++)
     {
-        cnt[i] += cnt[i - 1];                   //Cộng dồn mảng đếm để có được vị trí cuối cùng với mỗi cơ số hiện tại
+        cnt[i] += cnt[i - 1];
     }
+
+    // duyệt ngược mảng ban đầu để có được vị trí đúng của mảng so với mảng cộng dồn tần suất
     for (i = n - 1; ++count_comparison && i >= 0; i--)
     {
-        output[cnt[(array[i] / exp) % 10] - 1] = array[i];  //Duyệt ngược mảng ban đầu để có được vị trí đúng của mảng so với mảng cộng dồn tần suất
+        output[cnt[(array[i] / exp) % 10] - 1] = array[i];
         cnt[(array[i] / exp) % 10]--;
     }
+
+    // copy từ mảng mới về mảng ban đầu
     for (i = 0; ++count_comparison && i < n; i++)
     {
-        array[i] = output[i];                      //Copy từ mảng mới về mảng ban đầu
+        array[i] = output[i];
     }
 }
 
 template<class T>
-void radixSort(std::vector<T>& array, size_t& count_comparison) 
+void radixSort(std::vector<T>& array, size_t& count_comparison)
 {
-    //cài đặt radixSort
+    // cài đặt radixSort
     size_t soChuSo = (size_t)getMax(array, count_comparison);
+
+    // thực hiện các chữ số từ phải cùng qua trái
     for (size_t exp = 1; ++count_comparison && soChuSo / exp > 0; exp *= 10)
     {
-        countSort(array, exp, count_comparison);                  //Thực hiện các chữ số từ phải cùng qua trái
+        countSort(array, exp, count_comparison);
     }
 }
 
 template<class T>
 T getMax(std::vector<T>& array)
 {
-    //cài đặt lấy giá trị lớn nhất (hoặc số có nhiều chữ số nhất) của radixSort
+    // cài đặt lấy giá trị lớn nhất (hoặc số có nhiều chữ số nhất) của radixSort
     T mx = array[0];
     size_t n = array.size();
     for (size_t i = 1; i < n; i++)
@@ -73,38 +85,50 @@ T getMax(std::vector<T>& array)
 template<class T>
 void countSort(std::vector<T>& array, size_t exp)
 {
-    //cài đặt hàm sắp xếp theo từng cơ số của từng chữ số trong radixSort
+    // cài đặt hàm sắp xếp theo từng cơ số của từng chữ số trong radixSort
     size_t n = array.size();
-    std::vector<T> output(n);                      //tạo một mảng tạm để lưu trữ sau khi sắp xếp theo cơ số
+
+    // tạo một mảng tạm để lưu trữ sau khi sắp xếp theo cơ số
+    std::vector<T> output(n);
     int i;
-    size_t cnt[10] = { 0 };                       //đếm số lần xuất hiện của từng chữ số trong cơ số 10
+
+    // đếm số lần xuất hiện của từng chữ số trong cơ số 10
+    size_t cnt[10] = { 0 };
     for (i = 0; i < n; i++)
     {
         cnt[(array[i] / exp) % 10]++;
     }
+
+    // cộng dồn mảng đếm để có được vị trí cuối cùng với mỗi cơ số hiện tại
     for (i = 1; i < 10; i++)
     {
-        cnt[i] += cnt[i - 1];                   //Cộng dồn mảng đếm để có được vị trí cuối cùng với mỗi cơ số hiện tại
+        cnt[i] += cnt[i - 1];
     }
+
+    // duyệt ngược mảng ban đầu để có được vị trí đúng của mảng so với mảng cộng dồn tần suất
     for (i = n - 1; i >= 0; i--)
     {
-        output[cnt[(array[i] / exp) % 10] - 1] = array[i];  //Duyệt ngược mảng ban đầu để có được vị trí đúng của mảng so với mảng cộng dồn tần suất
+        output[cnt[(array[i] / exp) % 10] - 1] = array[i];
         cnt[(array[i] / exp) % 10]--;
     }
+
+    // copy từ mảng mới về mảng ban đầu
     for (i = 0; i < n; i++)
     {
-        array[i] = output[i];                      //Copy từ mảng mới về mảng ban đầu
+        array[i] = output[i];
     }
 }
 
 template<class T>
 void radixSort(std::vector<T>& array)
 {
-    //cài đặt radixSort
+    // cài đặt radixSort
     size_t soChuSo = (size_t)getMax(array);
+
+    // thực hiện các chữ số từ phải cùng qua trái
     for (size_t exp = 1; soChuSo / exp > 0; exp *= 10)
     {
-        countSort(array, exp);                  //Thực hiện các chữ số từ phải cùng qua trái
+        countSort(array, exp);
     }
 }
 

@@ -1,12 +1,13 @@
-#include "../header/flashSort.h"
+﻿#include "../header/flashSort.h"
 
 template <class T> 
 void flashSort(std::vector<T> &arr, size_t &count_comparison) {
     if (++count_comparison && (arr.size() <= 1)) return;
 
-    // step 0: find min and max
 	int min_arr = arr[0], max_arr = arr[0];
 	double alpha = 0.45;
+
+	// tìm min và max trong mảng
 
 	for (int i = 1;++count_comparison && (i < arr.size()); i++) {
 		if (++count_comparison && (arr[i] < min_arr)) {
@@ -21,21 +22,28 @@ void flashSort(std::vector<T> &arr, size_t &count_comparison) {
 		return;
 
 	int m = arr.size() * alpha; 
-	// 0.45 * n will be wrong
+
+	// đảm bảo có ít nhất 2 lớp
+
 	if (++count_comparison && (m <= 2)) m = 2;
 	
 	std::vector<int> L(m, 0);
+
+	// đếm số phần tử trong từng lớp
 
 	for (int i = 0; ++count_comparison && (i < arr.size()); i++) {
 		int k = 1ll * (m - 1) * (arr[i] - min_arr) / (max_arr - min_arr);
 		L[k]++;
 	}
 
+	// prefix sum để tìm vị trí bắt đầu của mỗi lớp trong mảng
 	for (int k = 1;++count_comparison && (k < m); k++) L[k] += L[k - 1];	
 
 	int i = 0;
 	int count = 0;
 	int k = m - 1;
+
+	// đưa các phần tử về đúng lớp
 	while (++count_comparison && (count < arr.size())) {
 		while (++count_comparison && (i >= L[k])) {
 			i++;
@@ -51,7 +59,7 @@ void flashSort(std::vector<T> &arr, size_t &count_comparison) {
 			count++;
 		}
 	}
-
+	// thực hiện insertion sort để sắp xếp từng lớp
 	for (int k = 1;++count_comparison && (k < m); k++) {
 		int selected = 0, j = 0;
 
@@ -59,7 +67,7 @@ void flashSort(std::vector<T> &arr, size_t &count_comparison) {
 			selected = arr[i];
 			j = i - 1;
 	
-			// Find place to insert selected element
+			// đặt phần tử đã chọn vào đúng vị trí trong lớp
 			while (++count_comparison && (j >= 0) &&++count_comparison && (arr[j] > selected)) {
 				arr[j + 1] = arr[j];
 				j--;
@@ -77,6 +85,8 @@ template <class T> void flashSort(std::vector<T> &arr) {
 	int min_arr = arr[0], max_arr = arr[0];
 	double alpha = 0.45;
 
+	// tìm min và max trong mảng
+
 	for (int i = 1;i < arr.size(); i++) {
 		if (arr[i] < min_arr)
 			min_arr = arr[i];
@@ -87,7 +97,9 @@ template <class T> void flashSort(std::vector<T> &arr) {
 	if (max_arr == min_arr)
 		return;
 
-	int m = arr.size() * alpha; // 0.45 * n will be wrong
+	int m = arr.size() * alpha;
+
+	// đảm bảo có ít nhất 2 lớp
 	if (m <= 2) m = 2;
 
     std::vector<int> L(m, 0);
@@ -97,11 +109,16 @@ template <class T> void flashSort(std::vector<T> &arr) {
 		L[k]++;
 	}
 
+	// prefix sum để tìm vị trí bắt đầu của mỗi lớp trong mảng
+
 	for (int k = 1; k < m; k++) L[k] += L[k - 1];
 	
 	int i = 0;
 	int count = 0;
 	int k = m - 1;
+
+	// đưa các phần tử về đúng lớp
+
 	while (count < arr.size()) {
 		while (i >= L[k]) {
 			i++;
@@ -118,6 +135,8 @@ template <class T> void flashSort(std::vector<T> &arr) {
 		}
 	}
 
+	// thực hiện insertion sort trong mỗi lớp
+
 	for (int k = 1; k < m; k++) {
 		int selected = 0, j = 0;
 
@@ -125,7 +144,7 @@ template <class T> void flashSort(std::vector<T> &arr) {
 			selected = arr[i];
 			j = i - 1;
 	
-			// Find place to insert selected element
+			// đặt phần tử đã chọn vào đúng vị trí trong lớp
 			while ((j >= 0) && (arr[j] > selected)) {
 				arr[j + 1] = arr[j];
 				j--;

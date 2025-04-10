@@ -5,12 +5,15 @@ template <class T>
 void selectionSort(std::vector<T>& array) {
     for (size_t i = 0; i < array.size() - 1; ++i) {
         size_t minIndex = i;
-        for (size_t j = i + 1; j < array.size(); ++j) { //tìm phần tử nhỏ nhất của mảng chưa được sắp xếp
+
+        //tìm phần tử nhỏ nhất của mảng chưa được sắp xếp
+        for (size_t j = i + 1; j < array.size(); ++j) {
             if (array[j] < array[minIndex]) {
                 minIndex = j;
             }
         }
-        swap<T>(array[i], array[minIndex]);             //đưa phần tử nhỏ nhất đó về đúng vị trí
+        //đưa phần tử nhỏ nhất đó về đúng vị trí
+        swap<T>(array[i], array[minIndex]);             
     }
 }
 
@@ -19,12 +22,14 @@ void selectionSort(std::vector<T>& array, size_t &countComparison) {
     countComparison = 0;
     for (size_t i = 0; ++countComparison && i < array.size() - 1; ++i) {
         size_t minIndex = i;
-        for (size_t j = i + 1; ++countComparison && j < array.size(); ++j) {    //tìm phần tử nhỏ nhất của mảng chưa được sắp xếp
+        //tìm phần tử nhỏ nhất của mảng chưa được sắp xếp
+        for (size_t j = i + 1; ++countComparison && j < array.size(); ++j) { 
             if (++countComparison && array[j] < array[minIndex]) {
                 minIndex = j;
             }
         }
-        swap<T>(array[i], array[minIndex]);                 //đưa phần tử nhỏ nhất đó về đúng vị trí
+        //đưa phần tử nhỏ nhất đó về đúng vị trí
+        swap<T>(array[i], array[minIndex]);                 
     }
 }
 

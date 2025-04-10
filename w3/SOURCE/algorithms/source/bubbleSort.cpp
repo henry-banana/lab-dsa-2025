@@ -3,8 +3,9 @@
 template <class T>
 void bubbleSort(std::vector<T> &arr, size_t &count_comparison) {
     count_comparison = 0;
-    bool swapped = false;                                           //sử dụng bản Improved Bubble Sort
+    bool swapped = false;                                           
 
+    // improved bubble sort: nếu trong vòng lặp không có phép hoán đổi nào xảy ra, tức mảng đã được sắp xếp thì kết thúc vòng lặp sớm
     for (int i = 0; ++count_comparison && (i < arr.size() - 1); i++) {
         swapped = false;
         for (int j = 0; ++count_comparison && (j < arr.size() - i - 1); j++) {
@@ -13,16 +14,17 @@ void bubbleSort(std::vector<T> &arr, size_t &count_comparison) {
                 swapped = true;
             }
         }
-
-        if (++count_comparison && (swapped == false))               //kết thúc nếu mảng đã được sắp xếp
+        // nếu mảng đã được sắp xếp thì dừng lại
+        if (++count_comparison && (swapped == false))               
             break;
     }
 }
 
 template <class T>
 void bubbleSort(std::vector<T> &arr) {
-    bool swapped = false;                                       //sử dụng bản Improved Bubble Sort
+    bool swapped = false;         
 
+    // improved bubble sort: nếu trong vòng lặp không có phép hoán đổi nào xảy ra, tức mảng đã được sắp xếp thì kết thúc vòng lặp sớm
     for (int i = 0; i < arr.size() - 1; i++) {
         swapped = false;                                
         for (int j = 0; j < arr.size() - i - 1; j++) {
@@ -31,8 +33,8 @@ void bubbleSort(std::vector<T> &arr) {
                 swapped = true;
             }
         }
- 
-        if (swapped == false)                               //nếu mảng đã được sắp xếp thì dừng lại
+        // nếu mảng đã được sắp xếp thì dừng lại
+        if (swapped == false)                               
             break;
     }
 }

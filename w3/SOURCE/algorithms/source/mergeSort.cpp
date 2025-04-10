@@ -2,8 +2,8 @@
 
 template<class T>
 void Merge(std::vector<T>& array, size_t left, size_t mid, size_t right, size_t& count_comparison) {
-    size_t n1 = mid - left + 1;             //số phần tử của mảng bên trái
-    size_t n2 = right - mid;                //số phần tử của mảng bên phải
+    size_t n1 = mid - left + 1;             // số phần tử của mảng bên trái
+    size_t n2 = right - mid;                // số phần tử của mảng bên phải
     std::vector<T> arrayL(n1), arrayR(n2);
     for (size_t i = 0; ++count_comparison && i < n1; i++) {
         arrayL[i] = array[i + left];
@@ -14,8 +14,9 @@ void Merge(std::vector<T>& array, size_t left, size_t mid, size_t right, size_t&
 
     size_t i = 0, j = 0;
     size_t k = left;
-    
-    while(++count_comparison && i < n1 && ++count_comparison && j < n2) {   //ghép 2 mảng
+
+    // ghép 2 mảng
+    while(++count_comparison && i < n1 && ++count_comparison && j < n2) {   
         if (++count_comparison && arrayL[i] <= arrayR[j]) {
             array[k] = arrayL[i];
             i++;
@@ -28,7 +29,7 @@ void Merge(std::vector<T>& array, size_t left, size_t mid, size_t right, size_t&
 
         k++;
     }
-                    //ghép xong 1 trong 2 mảng đã hết, còn lại 1 mảng với các phần tử còn lại đều lớn hơn mảng đã ghép thì đưa hết vào
+    // ghép xong 1 trong 2 mảng đã hết, còn lại 1 mảng với các phần tử còn lại đều lớn hơn mảng đã ghép thì đưa hết vào
     while(++count_comparison && i < n1) {           
         array[k] = arrayL[i];
         k++;
@@ -50,9 +51,9 @@ void impleMergeSort(std::vector<T>& array, size_t left, size_t right, size_t& co
 
     size_t mid = (left + right) >> 1;
     
-    impleMergeSort(array, left, mid, count_comparison);             //mergeSort từ left đến mid
-    impleMergeSort(array, mid + 1, right, count_comparison);        //mergeSort từ mid + 1 đến right
-    Merge(array, left, mid, right, count_comparison);               //ghép 2 mảng vừa sort ở trên
+    impleMergeSort(array, left, mid, count_comparison);             // mergeSort từ left đến mid
+    impleMergeSort(array, mid + 1, right, count_comparison);        // mergeSort từ mid + 1 đến right
+    Merge(array, left, mid, right, count_comparison);               // ghép 2 mảng vừa sort ở trên
 }
 
 template<class T>
@@ -64,8 +65,8 @@ void mergeSort(std::vector<T>& array, size_t& count_comparison) {
 
 template<class T>
 void Merge(std::vector<T>& array, size_t left, size_t mid, size_t right) {
-    size_t n1 = mid - left + 1;                 //số phần tử của mảng bên trái
-    size_t n2 = right - mid;                    //số phần tử của mảng bên phải
+    size_t n1 = mid - left + 1;                 // số phần tử của mảng bên trái
+    size_t n2 = right - mid;                    // số phần tử của mảng bên phải
     std::vector<T> arrayL(n1), arrayR(n2);
 
     for (size_t i = 0; i < n1; i++) {
@@ -78,8 +79,9 @@ void Merge(std::vector<T>& array, size_t left, size_t mid, size_t right) {
 
     size_t i = 0, j = 0;
     size_t k = left;
-    
-    while(i < n1 && j < n2) {                       //ghép 2 mảng
+
+    //ghép 2 mảng
+    while(i < n1 && j < n2) {                      
         if (arrayL[i] <= arrayR[j]) {
             array[k] = arrayL[i];
             i++;
@@ -92,7 +94,8 @@ void Merge(std::vector<T>& array, size_t left, size_t mid, size_t right) {
 
         k++;
     }
-                                                    //ghép xong 1 trong 2 mảng đã hết, còn lại 1 mảng với các phần tử còn lại đều lớn hơn mảng đã ghép thì đưa hết vào
+
+    //ghép xong 1 trong 2 mảng đã hết, còn lại 1 mảng với các phần tử còn lại đều lớn hơn mảng đã ghép thì đưa hết vào
     while(i < n1) {
         array[k] = arrayL[i];
         k++;
@@ -114,9 +117,9 @@ void impleMergeSort(std::vector<T>& array, size_t left, size_t right) {
 
     size_t mid = (left + right) >> 1;
     
-    impleMergeSort(array, left, mid);               //mergeSort từ left đến mid
-    impleMergeSort(array, mid + 1, right);          //mergeSort từ mid + 1 đến right    
-    Merge(array, left, mid, right);                 //ghép 2 mảng vừa sort ở trên
+    impleMergeSort(array, left, mid);               // mergeSort từ left đến mid
+    impleMergeSort(array, mid + 1, right);          // mergeSort từ mid + 1 đến right    
+    Merge(array, left, mid, right);                 // ghép 2 mảng vừa sort ở trên
 }
 
 template<class T>

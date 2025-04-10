@@ -1,12 +1,14 @@
 #include "../header/quickSort.h"
 
 template<class T>
-int Partition(std::vector<T>& array, int low, int high, size_t& count_comparison)   //sử dụng cải tiến với lấy pivot là trung vị của 3 số array[low], array[high] và array[mid]
+int Partition(std::vector<T>& array, int low, int high, size_t& count_comparison)   // sử dụng cải tiến với lấy pivot là trung vị của 3 số array[low], array[high] và array[mid]
 {
-    int mid = (low + high) >> 1;                //dịch tất cả bit sang phải -> chia 2
+    int mid = low + (high - low) / 2;
     T pivot = array[mid];
     int index_pivot = mid;
-    if (++count_comparison && pivot > array[low] && ++count_comparison && pivot > array[high])  //phần tử pivot là phần tử trung vị của array[low], array[high] và array[mid]
+
+    // phần tử pivot là phần tử trung vị của array[low], array[high] và array[mid]
+    if (++count_comparison && pivot > array[low] && ++count_comparison && pivot > array[high])  
     {
         if (++count_comparison && array[low] > array[high])
         {
@@ -36,7 +38,17 @@ int Partition(std::vector<T>& array, int low, int high, size_t& count_comparison
         }
     }
     int i = low - 1;
-    for (int j = low; ++count_comparison && j <= high - 1; j++)         //tìm vị trí thích hợp cho pivot
+
+    // hoán vị pivot và phần tử cuối (high)
+    T temp = array[high];
+    array[high] = array[index_pivot];
+    array[index_pivot] = temp;
+
+    pivot = array[high];
+    index_pivot = high;
+   
+    // tìm vị trí thích hợp cho pivot
+    for (int j = low; ++count_comparison && j <= high - 1; j++)        
     {
         if (++count_comparison && array[j] < pivot)
         {
@@ -44,7 +56,9 @@ int Partition(std::vector<T>& array, int low, int high, size_t& count_comparison
             swap(array[i], array[j]);
         }
     }
-    swap(array[i + 1], array[index_pivot]);                     //đưa pivot về đúng vị trí
+
+    // đưa pivot về đúng vị trí
+    swap(array[i + 1], array[high]);                     
     return i + 1;
 }
 
@@ -68,10 +82,12 @@ void quickSort(std::vector<T>& array, size_t& count_comparison)
 template<class T>
 int Partition(std::vector<T>& array, int low, int high) //sử dụng cải tiến với lấy pivot là trung vị của 3 số array[low], array[high] và array[mid]
 {
-    int mid = (low + high) >> 1;                //dịch chuyển các bit sang phải 1 đơn vị -> chia 2
+    int mid = low + (high - low) / 2;
     T pivot = array[mid];
     int index_pivot = mid;
-    if (pivot > array[low] && pivot > array[high])      //phần tử pivot là phần tử trung vị của array[low], array[high] và array[mid]
+
+    //phần tử pivot là phần tử trung vị của array[low], array[high] và array[mid]
+    if (pivot > array[low] && pivot > array[high])      
     {
         if (array[low] > array[high])
         {
@@ -101,7 +117,17 @@ int Partition(std::vector<T>& array, int low, int high) //sử dụng cải ti�
         }
     }
     int i = low - 1;
-    for (int j = low; j <= high - 1; j++)               //tìm vị trí của phần tử pivot
+
+    // hoán vị pivot và phần tử cuối (high)
+    T temp = array[high];
+    array[high] = array[index_pivot];
+    array[index_pivot] = temp;
+    
+    pivot = array[high];
+    index_pivot = high;
+
+    //tìm vị trí của phần tử pivot
+    for (int j = low; j <= high - 1; j++)               
     {
         if (array[j] < pivot)
         {
@@ -109,7 +135,8 @@ int Partition(std::vector<T>& array, int low, int high) //sử dụng cải ti�
             swap(array[i], array[j]);
         }
     }
-    swap(array[i + 1], array[index_pivot]);             //đưa pivot về đúng vị trí
+    //đưa pivot về đúng vị trí
+    swap(array[i + 1], array[high]);
     return i + 1;
 }
 
