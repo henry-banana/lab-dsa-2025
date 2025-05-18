@@ -4,14 +4,14 @@
 #include <fstream>
 #include <sstream>
 
+const long long P_HASH = 31;
+const long long M_HASH = 2000;
+
 struct Company {
     std::string name;
     std::string profit_tax;
     std::string address;
 };
-
-const long long P_HASH = 31;
-const long long M_HASH = 2000;
 
 struct HashTable {
     std::vector<std::vector<Company>> table;
